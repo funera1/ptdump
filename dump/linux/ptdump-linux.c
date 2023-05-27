@@ -44,11 +44,11 @@ static int ptdump_open(struct inode *inode, struct file *fp) {
 	return single_open(fp, do_ptdump, PDE_DATA(inode));
 }
 
-static const struct file_operations ptdump_fops = {
-	.open    = ptdump_open,
-	.read    = seq_read,
-	.llseek  = seq_lseek,
-	.release = single_release,
+static const struct proc_ops ptdump_fops = {
+	.proc_open    = ptdump_open,
+	.proc_read    = seq_read,
+	.proc_lseek  = seq_lseek,
+	.proc_release = single_release,
 };
 
 static struct proc_dir_entry *proc_page_table0;
