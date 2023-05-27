@@ -13,6 +13,7 @@
 #include <linux/proc_fs.h>
 #include <linux/seq_file.h>
 #include <asm/io.h>
+#include <asm/processor.h>
 
 #ifdef CONFIG_X86_64
 
@@ -24,7 +25,7 @@ void output(void* p, void* data, ullong len) {
 }
 
 ullong get_base(void* p) {
-	return read_cr3();
+	return read_cr3_pa();
 }
 
 ullong* read_page(void* p, ullong address) {
